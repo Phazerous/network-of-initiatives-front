@@ -1,19 +1,19 @@
-import { useState } from 'react';
-import TableOfInitaitives from '../../table-of-initiatives/TableOfInitaitives';
+import { useState } from "react";
+import TableOfInitaitives from "../../table-of-initiatives/TableOfInitaitives";
 
-import InitiativeModalDetails from '../../table-of-initiatives/initiative-modal/initiative-modal-details/InitiativeModalDetails';
+import InitiativeModalDetails from "../../table-of-initiatives/initiative-modal/initiative-modal-details/InitiativeModalDetails";
 
-import styles from './initiative-section.module.scss';
-import InitiativeModalForm from '../../table-of-initiatives/initiative-modal/initiative-modal-form/InitiativeModalForm';
-import InitiativeModalFormSent from '../../table-of-initiatives/initiative-modal/initiative-modal-form/initiative-modal-form-sent/InitiativeModalFormSent';
-import InitiativeModalPropose from '../../table-of-initiatives/initiative-modal/initiative-modal-propose/InitiativeModalPropose';
-import InitiativeModalProposeSent from '../../table-of-initiatives/initiative-modal/initiative-modal-propose/initiative-modal-propose-sent/InitiativeModalProposeSent';
+import styles from "./initiative-section.module.scss";
+import InitiativeModalForm from "../../table-of-initiatives/initiative-modal/initiative-modal-form/InitiativeModalForm";
+import InitiativeModalFormSent from "../../table-of-initiatives/initiative-modal/initiative-modal-form/initiative-modal-form-sent/InitiativeModalFormSent";
+import InitiativeModalPropose from "../../table-of-initiatives/initiative-modal/initiative-modal-propose/InitiativeModalPropose";
+import InitiativeModalProposeSent from "../../table-of-initiatives/initiative-modal/initiative-modal-propose/initiative-modal-propose-sent/InitiativeModalProposeSent";
 
-import useSWR from 'swr';
-import dataFetcher from '../../../../lib/dataFetcher';
+import useSWR from "swr";
+import dataFetcher from "../../../../lib/dataFetcher";
 
-import config from '../../../../config';
-import Loading from '../../Loading/Loading';
+import config from "../../../../config";
+import Loading from "../../Loading/Loading";
 
 export default function InitiativeSection() {
   const {
@@ -66,7 +66,7 @@ export default function InitiativeSection() {
   }
 
   return (
-    <>
+    <div className={styles.container}>
       {initiatives && (
         <TableOfInitaitives
           initiatives={initiatives}
@@ -78,18 +78,17 @@ export default function InitiativeSection() {
           totalPages={totalPages}
         />
       )}
-
+      {/* //{" "} */}
       {(modalPage !== 0 || proposePage !== 0) && (
         <div className={styles.overlay}></div>
       )}
-
+      {/* //{" "} */}
       {proposePage === 1 && (
         <InitiativeModalPropose
           onCancel={handleProposeBack}
           onSubmit={handleProposeNext}
         />
       )}
-
       {proposePage === 2 && (
         <InitiativeModalProposeSent onSubmit={() => setProposePage(0)} />
       )}
@@ -101,7 +100,6 @@ export default function InitiativeSection() {
           onSubmit={handleModalNext}
         />
       )}
-
       {modalPage === 2 && selectedInitiative !== null && (
         <InitiativeModalForm
           initiative={selectedInitiative}
@@ -113,6 +111,6 @@ export default function InitiativeSection() {
       {modalPage === 3 && selectedInitiative !== null && (
         <InitiativeModalFormSent onSubmit={() => setModalPage(0)} />
       )}
-    </>
+    </div>
   );
 }

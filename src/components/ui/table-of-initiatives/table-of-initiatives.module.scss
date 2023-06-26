@@ -1,12 +1,9 @@
-@import '@styles/variables';
+@import "@styles/variables";
 
 .table {
   display: grid;
-  grid-template-columns: repeat(2, min-content);
   grid-template-rows: repeat(3, min-content);
   gap: 20px 40px;
-
-  height: 100vh; // REMOVE
   place-content: center;
 }
 
@@ -14,16 +11,19 @@
   grid-row: 3 / 4;
   place-self: start;
   color: #000;
-  border: 1px solid #000;
   padding: 28px 32px;
   border-radius: 18px;
   font-size: $fz-h5;
+  background-color: rgba(86, 157, 170, 1);
+  color: white;
+}
+.propose:hover {
+  opacity: 0.9;
 }
 
 .pageControls {
   grid-row: 3 / 4;
   justify-self: end;
-
   display: flex;
   align-items: center;
   column-gap: 32px;
@@ -34,7 +34,39 @@
   }
 }
 
-.moves {
+.movesWrapper {
   display: flex;
+  flex-direction: row;
   column-gap: 8px;
+  cursor: pointer;
+  align-items: center;
+}
+.moves1:hover,
+.moves2:hover {
+  opacity: 0.5;
+}
+
+@media (max-width: 1444px) {
+  .table {
+    gap: 20px 10px;
+  }
+}
+
+@media (max-width: 1300px) {
+  .table {
+    display: block;
+  }
+
+  .pageControls {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 395px) {
+  .propose {
+    padding: 5px 6px;
+  }
+  .pageControls {
+    justify-content: center;
+  }
 }

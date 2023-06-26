@@ -1,0 +1,32 @@
+.container {
+  margin-bottom: 188px;
+}
+.textAnswer {
+  text-align: center;
+  font-family: Manrope;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 22px;
+  margin-bottom: 32px;
+}
+.imgWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.telegram {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 576px) {
+  .container {
+    margin-bottom: 60px;
+  }
+  .textAnswer {
+    font-size: 14px;
+  }
+}
